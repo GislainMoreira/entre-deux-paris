@@ -1,11 +1,6 @@
 const router = require('express').Router();
-const Clothe = require('../../models/clothe');
+const controller = require('../../controllers/shirts');
 
-router.get('/', (req, res) => {
-  Clothe.getShirtsTops(function(err, shirts) {
-    if(err){ throw err; }
-    res.status(200).json(shirts);
-  });
-});
+router.get('/', controller.getShirtsTops);
 
 module.exports = router;

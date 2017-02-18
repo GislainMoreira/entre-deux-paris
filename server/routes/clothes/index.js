@@ -1,30 +1,11 @@
 const router = require('express').Router();
-const Clothe = require('../../models/clothe');
+const controller = require('../../controllers/clothes');
+const authController = require('../../controllers/auth');
 
-router.get('/', (req, res) => {
-  Clothe.getClothes(function(err, clothes) {
-    if(err){ throw err; }
-    res.status(200).json(clothes);
-  });
-});
-
-router.get('/:id', (req, res) => {
-  Clothe.getClotheById(req.params.id, function(err, clothes) {
-    if(err){ throw err; }
-    res.status(200).json(clothes);
-  });
-});
-
-router.post('/', (req, res) => {
-  res.status(200).json("add new clothe");
-});
-
-router.put('/:id', (req, res) => {
-  res.status(200).json("modify clothe");
-});
-
-router.delete('/:id', (req, res) => {
-  res.status(200).json("delete clothe");
-});
+router.get('/', controller.getClothes);
+router.get('/:id', controller.getCloth);
+router.post('/', authController.isAuthenticated, controller.postCloth);
+router.put('/:id', authController.isAuthenticated, controller.putCloth);
+router.delete('/:id', authController.isAuthenticated, controller.deleteCloth);
 
 module.exports = router;
