@@ -17,13 +17,13 @@ module.exports.getCloth = (req, res) => {
 };
 
 module.exports.postCloth = (req, res) => {
-  res.status(200).json("post clothe");
+  res.status(200).json("post cloth");
 };
 
 module.exports.putCloth = (req, res) => {
-  res.status(200).json("put clothe");
+  res.status(200).json("put cloth");
 };
 
 module.exports.deleteCloth = (req, res) => {
-  res.status(200).json("delete clothe");
+  res.status(200).json("delete cloth");
 };

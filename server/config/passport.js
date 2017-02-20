@@ -16,7 +16,6 @@ const localLogin = new LocalStrategy(localOptions, (login, password, callback) =
       if (!isMatch) {
         return callback(null, false, { error: "Your login details could not be verified. Please try again." });
       }
-
       return callback(null, user);
     });
   });
@@ -28,10 +27,8 @@ const jwtOptions = {
 };
 
 const jwtLogin = new JwtStrategy(jwtOptions, (payload, callback) => {
-  console.log(payload);
-  User.findById(payload._id, function(err, user) {
+  User.findById(payload._id, (err, user) => {
     if (err) { return callback(err, false); }
-
     (user) ? callback(null, user) : callback(null, false);
   });
 });
@@ -39,5 +36,4 @@ const jwtLogin = new JwtStrategy(jwtOptions, (payload, callback) => {
 passport.use(jwtLogin);
 passport.use(localLogin);
 
-module.exports.requireAuth = passport.authenticate('jwt', { session: false });
 module.exports = passport;

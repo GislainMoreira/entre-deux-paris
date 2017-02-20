@@ -26,12 +26,10 @@
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.16.1",
     "browserify": "^14.0.0",
-    "css-loader": "^0.23.1",
     "eslint": "^2.9.0",
     "eslint-plugin-babel": "^3.2.0",
     "eslint-plugin-react": "^5.0.1",
     "express": "^4.13.4",
-    "express-controller": "^0.3.2",
     "grommet": "^1.2.1",
     "jsonwebtoken": "latest",
     "lodash": "^4.17.4",
@@ -42,7 +40,6 @@
     "passport-http": "^0.3.0",
     "passport-jwt": "^2.2.1",
     "passport-local": "^1.0.0",
-    "passport-local-mongoose": "^4.0.0",
     "react": "^15.0.2",
     "react-addons-css-transition-group": "^15.0.2",
     "react-dom": "^15.0.2",
@@ -56,12 +53,7 @@
     "recompose": "^0.21.2",
     "redbox-react": "^1.2.3",
     "redux": "^3.5.2",
-    "request": "^2.79.0",
-    "superagent": "^3.4.3",
-    "superagent-jwt": "^0.3.0",
-    "webpack": "^1.13.0",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "request": "^2.79.0"
   },
   "devDependencies": {
     "css-loader": "^0.23.1",
@@ -76,6 +68,9 @@
     "react-addons-test-utils": "^15.0.2",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "webpack": "^1.13.0",
+    "webpack-dev-middleware": "^1.6.1",
+    "webpack-hot-middleware": "^2.10.0"
   }
 }
