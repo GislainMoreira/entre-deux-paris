@@ -8,14 +8,15 @@ const generateToken = (user) => {
   });
 };
 
-const setUserInfo = (user) => {
+const setUserInfo = (request) => {
   return {
-    _id: user._id,
-    login: user.login
+    _id: request._id,
+    login: request.login
   };
 };
 
 module.exports.login = (req, res, next) => {
+
   let userInfo = setUserInfo(req.user);
 
   res.status(200).json({

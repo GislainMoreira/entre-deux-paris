@@ -35,6 +35,17 @@ module.exports = {
       {
         test: /\.scss$/,
         loaders: [ 'style', 'css', 'sass' ]
+      },
+      {
+        test: /\.(jpg|png)$/,
+        loader: 'url-loader',
+        options: {
+          limit: 25000,
+        }
+      },
+      {
+        test: /\.json$/,
+        loader: 'json-loader'
       }
     ]
   },
@@ -43,4 +54,10 @@ module.exports = {
       './node_modules'
     ]
   },
+  node: {
+    net: 'empty',
+    tls: 'empty',
+    dns: 'empty',
+    fs: "empty"
+  }
 };

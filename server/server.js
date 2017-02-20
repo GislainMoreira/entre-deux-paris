@@ -2,27 +2,31 @@ const path = require('path');
 const express = require('express');
 const webpack = require('webpack');
 const bodyParser  = require('body-parser');
-const config = (process.env.NODE_ENV == 'dev') ? require('../webpack.config.dev') : require('../webpack.config.prod');
-const passport = require('passport');
+const config = require('./config');
+const passport = require('./config/passport');
 const app = express();
-const compiler = webpack(config);
+const compiler = webpack(config.webpackConfig);
 const routes = require('./routes');
-const authController = require('./controllers/auth');
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
-  publicPath: config.output.publicPath
+  publicPath: config.webpackConfig.output.publicPath
 }));
 app.use(require('webpack-hot-middleware')(compiler));
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/api', routes);
 app.use(passport.initialize());
 
+app.get('/admin/dashboard', (req, res) => {
+  console.log(req.user);
+  res.sendFile(path.join(__dirname, '../src/index.html'));
+});
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/index.html'));
 });
 
-app.listen(3000, 'localhost', (err) => {
+app.listen(config.port, 'localhost', (err) => {
   if (err) {
     console.log(err);
     return;
