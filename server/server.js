@@ -18,9 +18,9 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 app.use(passport.initialize());
 
-app.get('/admin/dashboard',passport.authenticate('jwt', { session: false }), (req, res,next) => {
-  console.log(req.user);
-  res.sendFile(path.join(__dirname, '../src/index.html'));
+app.get('/admin/*',passport.authenticate('jwt', {
+  session: false ,
+  failureRedirect: '/admin' }), (req, res, next) => {
 });
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../src/index.html'));
